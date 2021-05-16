@@ -84,6 +84,9 @@ async def on_message(message):
   if msg.startswith("#you"):
     await message.channel.send(file=discord.File("meme_spiderman.jpg"))
 
+  if msg.startswith("#command"):
+    await message.channel.send("Don't forget the s ;)")
+
   if msg.startswith("#commands"):
     command = show_commands()
     await message.channel.send(command)
