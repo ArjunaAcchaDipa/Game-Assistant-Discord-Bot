@@ -81,17 +81,17 @@ async def on_message(message):
   if msg.startswith("#hello"):
     await message.channel.send("Hello {}".format(message.author.name))
   
-  if msg.startswith("#you"):
+  elif msg.startswith("#you"):
     await message.channel.send(file=discord.File("meme_spiderman.jpg"))
 
-  if msg.startswith("#command"):
-    await message.channel.send("Don't forget the s ;)")
-
-  if msg.startswith("#commands"):
+  elif msg.startswith("#commands"):
     command = show_commands()
     await message.channel.send(command)
 
-  if msg.startswith("#info"):
+  elif msg.startswith("#command"):
+    await message.channel.send("Don't forget the s ;)")
+
+  elif msg.startswith("#info"):
     options = msg.split("#info ", 1)[1]
     if " " in options:
       await message.channel.send("There is something wrong with the command\nType `#commands` to show all commands")
@@ -113,7 +113,7 @@ async def on_message(message):
           except:
             await message.channel.send("There are no play list(s) for now")
 
-  if msg.startswith("#add"):
+  elif msg.startswith("#add"):
     options = msg.split("#add ", 1)[1]
     game_name = options.split(" ", 1)[0]
     total_player = options.split(" ", 2)[1]
@@ -127,7 +127,7 @@ async def on_message(message):
       update_play_list(game_name, total_player, user_name, user_id)
       await message.channel.send("Play list has been added\nType `#info play` to show the list(s)")
   
-  if msg.startswith("#del"):
+  elif msg.startswith("#del"):
     game_list = db["game"]
     options = msg.split("#del ", 1)[1]
     if " " in options:
@@ -143,7 +143,7 @@ async def on_message(message):
         delete_play_list(options)
         await message.channel.send("Play list number {} has been deleted\nType `#info play` to show the list(s)".format(options))
 
-  if msg.startswith("#clear"):
+  elif msg.startswith("#clear"):
     options = msg.split("#clear", 1)[1]
     if options:
       await message.channel.send("There is something wrong with the command\nType `#commands` to show all commands")
@@ -157,7 +157,7 @@ async def on_message(message):
       else:
         await message.channel.send("There are no play list(s) for now")
 
-  if msg.startswith("#join"):
+  elif msg.startswith("#join"):
     options = msg.split("#join ", 1)[1]
 
     if " " in options:
